@@ -1,0 +1,26 @@
+<style>
+body{background-color:black;}
+.bs-example{
+    	margin: 70%;
+	margin-left:30%;
+	margin-top:10%;
+	margin-right:30%;
+	background-color:#99c2ff;
+    }
+	
+	
+	
+.form-horizontal .control-label{
+        padding-top: 1%;
+	padding-left: 0%;
+    }
+	
+	h1{
+    color: #ff0000;
+    font-variant: small-caps;
+	font-size:4vw;
+}
+h3{
+font-size:2vw;
+}
+</style>

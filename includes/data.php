@@ -144,19 +144,19 @@ $pwd = $_POST['pwd'];
 
 //switch statement
 if(empty($first)){
-	header("Location: ../signup.php?error=empty");
+	header("Location: ../signup.php?error=first");
 	exit();
 }
 if(empty($last)){
-	header("Location: ../signup.php?error=empty");
+	header("Location: ../signup.php?error=last");
 	exit();
 }
 if(empty($uid)){
-	header("Location: ../signup.php?error=empty");
+	header("Location: ../signup.php?error=id");
 	exit();
 }
 if(empty($pwd)){
-	header("Location: ../signup.php?error=empty");
+	header("Location: ../signup.php?error=pwd");
 	exit();
 }
 else{

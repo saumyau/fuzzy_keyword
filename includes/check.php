@@ -182,6 +182,6 @@ else{
 	echo "you are logged in!".$_SESSION['id'];
 }
 //exit();
-header("Location: ../dataownlogin.php");
+header("Location: ../dw.php");
 //exit();
 ?>
