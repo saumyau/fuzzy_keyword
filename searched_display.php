@@ -101,7 +101,7 @@ echo $_SESSION['id'];
 <?php
 
    
-   $dir = 'C:/xamppy/htdocs/fuzzy/includes/'.$x; 
+   $dir = 'C:/xamppy/htdocs/fuzzy/searcheditems'; 
    $_SESSION['file_name']=$dir;
    echo "<form action='keyword_search.php' method='post'>";
    echo "<table>";
@@ -125,7 +125,7 @@ if (is_dir($dir)){
 
   $var=1;
     while (($file = readdir($dh)) !== false){ 
-      if(strcmp($file,'.')&&strcmp($file,'..')&&strcmp($file,'newfile.txt')&&strcmp($file,'newfile2.txt'))
+      if(strcmp($file,'.')&&strcmp($file,'..'))
       {
         echo "<tr>";
         echo "<td>".$var."</td>";

@@ -12,7 +12,7 @@ if ($_FILES["file"]["error"] > 0)
    {
      session_start();
      //ssession_set();
-     echo $_SESSION['id'];
+     //echo $_SESSION['id'];
      $passphrase = 'My secret';
      $username = $_SESSION['id'];
      //$_SESSION['id']=$username;
@@ -42,18 +42,22 @@ if ($_FILES["file"]["error"] > 0)
       mkdir($dir);
       }
       $myfile = fopen($dir."/newfile.txt", "a+") or die("Unable to open file!");
+      $myfile2 = fopen($dir."/newfile2.txt","a+") or die("Unable to open file!");
       for($i=0;$i<strlen($_FILES["file"]["name"])-1;$i++){
-        $var = substr($_FILES["file"]["name"], $i,$i+2);
+        $var = substr($_FILES["file"]["name"], $i,2);
+        $var2 = substr($_FILES["file"]["name"], $i,2);
        // echo "\n".$var;
         $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
         $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $var, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
       //echo $qEncoded;
         $qEncoded=$qEncoded."\n".$_FILES["file"]["name"]."\n\n";
+        $var2=$var2."\n".$_FILES["file"]["name"]."\n\n";
         fwrite($myfile, $qEncoded);
-
+        fwrite($myfile2,$var2);
       }
       
       fclose($myfile);  
+      fclose($myfile2);
       error_reporting(E_ERROR | E_PARSE);
 
       $file22 = file_get_contents($myfile);
@@ -67,14 +71,15 @@ if ($_FILES["file"]["error"] > 0)
      file_put_contents($_FILES["file"]["tmp_name"] ,$file2);
 
      move_uploaded_file($_FILES["file"]["tmp_name"],$username.'/'.$_FILES["file"]["name"]);
-     echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
+     //echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
 
      $file="images/".$_FILES["file"]["name"];
      $sql="INSERT INTO files (name, path) VALUES ('','$file')";
 
      //$result = $conn->query($sql);
-     echo"<font size = '5'><font color=\"#0CF44A\">SAVED TO DATABASE";
+     //echo"<font size = '5'><font color=\"#0CF44A\">SAVED TO DATABASE";
 
- 
-   }
+    header("Refresh:0; url='..\dw.php'");
+  }
+   
      ?>
